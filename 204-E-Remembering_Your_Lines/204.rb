@@ -1,5 +1,12 @@
 #!/usr/bin ruby
 
-arr = IO.readlines('macbeth.txt')
+def dialogue_search(string)
+  play = File.read('macbeth.txt') # Open up the Scottish play
+  splay = play.split(/\n\n/) # Join lines into dialogues
+  splay.each { |x| puts "#{x}\n\n" if x.include? string } # Find each matching dialogue
+end
 
-p arr.map.detect{|x| x.include?("break")}
+puts "Search for a phrase within Macbeth"
+input = gets.chomp.to_s
+puts "\nYour lines:\n"
+dialogue_search(input)
